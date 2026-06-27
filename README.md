@@ -54,30 +54,6 @@ This driver's built-in `.print()` method handles word-wrap and auto-scrolling, s
 - `erase()` does **not** reset scroll position or cursor. Always call `reset_scroll()` and `set_pos()` after `erase()`, or new text will appear in the wrong place.
 - `set_pos(2, 5)` is the cleanest starting position — anything closer to y=0 clips the top of the first line.
 
-### Standard boilerplate for any new script
-
-```python
-from machine import Pin, SPI
-from ili9341 import ILI9341, color565
-
-backlight = Pin(21, Pin.OUT)
-backlight.value(1)
-
-spi = SPI(1, baudrate=10000000, sck=Pin(14), mosi=Pin(13), miso=Pin(12))
-
-dummy_rst = Pin(4, Pin.OUT)
-dummy_rst.value(1)
-
-display = ILI9341(spi, cs=Pin(15), dc=Pin(2), rst=dummy_rst, w=320, h=240, r=0)
-
-display.set_color(color565(0, 0, 0), color565(255, 255, 255))  # black text, white bg
-display.erase()
-display.reset_scroll()
-display.set_pos(2, 5)
-
-display.print("Hello World!")
-```
-
 ## Folder structure
 
 - `basic/` — first working scripts: basic text display (`hello_world.py`) and a loop test (`loops_test.py`) to check how many lines fit on screen and how scrolling behaves.

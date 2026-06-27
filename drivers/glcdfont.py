@@ -1,3 +1,5 @@
+# Font from jeffmer/micropython-ili9341
+
 # Original Adafruit_GFX 5x7 font
 
 def height():

@@ -51,4 +51,26 @@ Driver used: [`jeffmer/micropython-ili9341`](https://github.com/jeffmer/micropyt
 - `set_pos(2, 5)` is the cleanest starting position — anything closer to y=0 clips the top of the first line.
 
 
-## Folder structure
+## How-To
+ 
+**1. Connect the board**
+Plug the device into your laptop via USB-A to C (or C to C).
+ 
+**2. Connect in Pymakr**
+The device should appear in the Pymakr sidebar — click it to connect.
+ 
+**3. Upload a file**
+Right-click any file in the file explorer → **Pymakr** → **Upload to Device**.
+ 
+**4. Use the REPL**
+Open a REPL terminal to interact with the board directly:
+ 
+```python
+import os
+os.listdir()       # see all files currently on the device
+ 
+import machine
+machine.reset()    # soft reset the board
+ 
+import file         # runs file.py if it's already uploaded to the device
+```
